@@ -11,6 +11,19 @@ warnings.filterwarnings('ignore',category=RuntimeWarning)
 
 
 def get_fpc_cli(dev):
+    '''
+    
+    cli() method is not recommend while using pyez. It could be used for simple cli command, "|" is not working
+    
+    cli() method is programmed to strip the '|' operator 
+    
+    From pyez source code:
+    ======
+    # Strip off any pipe modifiers
+        (command, _, _) = command.partition("|")
+    ======
+    
+    '''
     fpcs=dev.cli('show chassis fpc',warning=False)
     print(fpcs)
     fpc_list=fpcs.strip().split('\n')
